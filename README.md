@@ -30,7 +30,7 @@ The project follows a component-based architecture:
 
 1. Clone the repository:
 ```
-git clone https://github.com/your-username/wobb-web-redesign.git
+git clone https://github.com/Reshabcsst/wobb.git
 cd wobb-web-redesign
 ```
 
