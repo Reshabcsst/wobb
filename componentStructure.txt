@@ -1,0 +1,148 @@
+# Wobb Web App - Component Structure and State Management
+
+## Overall Architecture
+
+The Wobb Web App redesign follows a component-based architecture typical of modern React applications. The structure is organized to prioritize:
+
+1. **Reusability**: Components are designed to be reusable and composable
+2. **Separation of concerns**: Each component has a specific responsibility
+3. **State management**: Using React Hooks for efficient state management
+4. **Responsive design**: Tailwind CSS utility classes handle responsiveness
+
+## Component Hierarchy
+
+```
+WobbHomepage (Parent Component)
+├── Header
+├── Main Content
+│   ├── Title and Search
+│   ├── Filters
+│   └── Campaign Cards Grid
+│       └── CampaignCard (Child Component)
+└── Mobile Navigation
+```
+
+## Component Breakdown
+
+### 1. WobbHomepage Component
+
+This is the main parent component that:
+- Holds the application state
+- Manages filtering and search logic
+- Renders the overall layout structure
+- Handles the responsive layout changes
+
+**State Management:**
+- `campaigns`: Array of campaign objects with all campaign data
+- `activeFilter`: String tracking the currently selected filter
+- `searchQuery`: String tracking user search input
+- `filteredCampaigns`: Computed campaigns based on filter and search criteria
+
+### 2. CampaignCard Component
+
+This is a pure presentational component that:
+- Receives campaign data as props
+- Renders the card layout with all campaign information
+- Handles visual elements like progress bars and badges
+- Applies appropriate styling based on campaign properties
+
+**Props:**
+- `campaign`: Object containing all campaign details
+
+**Internal Logic:**
+- Calculates progress percentage for the hiring progress bar
+- Determines badge colors based on payout type
+- Formats and displays campaign data in a structured layout
+
+## State Management
+
+The application uses React Hooks for state management:
+
+### useState Hook
+
+```javascript
+// Main data state
+const [campaigns, setCampaigns] = useState([...]);
+
+// UI state
+const [activeFilter, setActiveFilter] = useState('All');
+const [searchQuery, setSearchQuery] = useState('');
+```
+
+### Derived State
+
+Rather than using additional state variables, the application calculates derived state:
+
+```javascript
+// Derived state - filtered campaigns based on current filters and search
+const filteredCampaigns = campaigns.filter(campaign => {
+  const matchesFilter = 
+    activeFilter === 'All' || 
+    (activeFilter === 'Mixed' && campaign.payoutType.includes('+')) ||
+    campaign.payoutType.includes(activeFilter);
+  
+  const matchesSearch = 
+    campaign.brandName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    campaign.campaignTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    campaign.category.toLowerCase().includes(searchQuery.toLowerCase());
+  
+  return matchesFilter && matchesSearch;
+});
+```
+
+## Data Flow
+
+1. User interactions (search input, filter selection) update state values
+2. State changes trigger component re-renders
+3. Filtered data is recalculated based on updated state
+4. UI reflects the current state and filtered data
+
+## Event Handling
+
+Event handlers are implemented inline for simplicity:
+
+```javascript
+// Filter button click handler
+onClick={() => setActiveFilter(filter)}
+
+// Search input change handler
+onChange={(e) => setSearchQuery(e.target.value)}
+```
+
+## Responsive Design Implementation
+
+The responsive design is primarily handled through Tailwind CSS utility classes:
+
+- Grid layout with responsive columns:
+  ```jsx
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  ```
+
+- Conditional rendering based on screen size:
+  ```jsx
+  <button className="hidden md:block">
+  ```
+
+- Flexbox direction changes:
+  ```jsx
+  <div className="flex flex-col md:flex-row">
+  ```
+
+- Mobile navigation that appears only on small screens:
+  ```jsx
+  <div className="md:hidden fixed bottom-0">
+  ```
+
+## Optimizations
+
+- **Minimized re-renders**: By keeping state at the top level and passing data down
+- **Efficient filtering**: Using derived state instead of additional state variables
+- **Responsive elements**: Using utility classes for conditional rendering based on screen size
+- **Performance considerations**: Using appropriate React patterns like pure components
+
+## Potential Enhancements
+
+- **Context API**: For more complex state management if the application grows
+- **Custom Hooks**: To extract and reuse complex logic
+- **Virtualization**: For rendering large lists of campaigns efficiently 
+- **Code Splitting**: To reduce initial bundle size as the application grows

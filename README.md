@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Wobb Influencer Portal - Web App Redesign
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a responsive redesign of the Wobb mobile app for web, created as part of the React.js Developer Intern assignment. The application displays available campaign listings for influencers in a clean, organized, and user-friendly interface.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Responsive design that works seamlessly on desktop, tablet, and mobile devices
+- Campaign filtering by payout type (Fixed Pay, Barter, Refund, Mixed)
+- Search functionality to find campaigns by brand name, title, or category
+- Visual progress indicators for hiring status
+- Organized information display with clear hierarchy
+- Mobile navigation menu
+- Clean, modern UI with consistent design elements
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React.js
+- Tailwind CSS for styling
+- React Hooks for state management
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Structure
 
-### `npm test`
+The project follows a component-based architecture:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **WobbHomepage**: The main component that renders the entire homepage and contains the application state
+- **CampaignCard**: A reusable component for displaying individual campaign details
+- Additional utility functions for filtering and formatting data
 
-### `npm run build`
+## Installation and Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+```
+git clone https://github.com/your-username/wobb-web-redesign.git
+cd wobb-web-redesign
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+```
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Run the development server:
+```
+npm start
+```
 
-### `npm run eject`
+4. Open your browser and navigate to:
+```
+http://localhost:3000
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Design Choices
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Color Scheme
+- Primary Blue (#3B82F6): Used for primary actions, links, and accent elements
+- White (#FFFFFF): Primary background color for cards and content areas
+- Light Gray (#F9FAFB): Secondary background color for page
+- Dark Gray (#111827): Used for primary text
+- Medium Gray (#6B7280): Used for secondary and descriptive text
+- Various accent colors for badges and status indicators
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Typography
+- Clear hierarchy with consistent font sizes:
+  - Large headers: 24px (1.5rem)
+  - Section headers: 20px (1.25rem)
+  - Card titles: 18px (1.125rem)
+  - Body text: 16px (1rem)
+  - Detail text: 14px (0.875rem)
+  - Small text: 12px (0.75rem)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Spacing
+- Consistent spacing pattern using a 4px base unit (4px, 8px, 16px, 24px, 32px, etc.)
+- Tighter spacing on mobile views
+- More generous spacing on desktop views
+- Consistent padding within cards and containers
 
-## Learn More
+### Component Design
+- Cards with subtle shadows and hover states
+- Progress indicators with color coding
+- Clear visual hierarchy of information
+- Prominent call-to-action buttons
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Responsive Design
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The application uses a mobile-first approach with breakpoints at:
+- Mobile: Default styles (< 768px)
+- Tablet: 768px and above
+- Desktop: 1024px and above
 
-### Code Splitting
+Key responsive features:
+- Single column layout on mobile, multi-column grid on larger screens
+- Bottom navigation bar on mobile
+- Horizontal filters that scroll on smaller screens
+- Adjusted spacing and typography for different screen sizes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Future Improvements
 
-### Analyzing the Bundle Size
+- Implement user authentication
+- Add campaign detail pages
+- Create application tracking functionality
+- Add notifications system
+- Implement dark mode
+- Add analytics for user engagement
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contact
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For any questions or feedback, please reach out to [naskarreshab2003@gmail.com]
